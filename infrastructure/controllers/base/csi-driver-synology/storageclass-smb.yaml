@@ -1,0 +1,12 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: smb
+provisioner: csi.san.synology.com
+parameters:
+  dsm: "192.168.178.2"
+  location: "/volume1"
+  csi.storage.k8s.io/node-stage-secret-name: smb-secrets
+  csi.storage.k8s.io/node-stage-secret-namespace: azure
+reclaimPolicy: Retain
+allowVolumeExpansion: true
