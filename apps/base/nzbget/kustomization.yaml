@@ -3,3 +3,5 @@ kind: Kustomization
 resources:
   - external-secret.yaml
   - service.yaml
+  - deployment.yaml
+  - persistent-volume-claim.yaml
