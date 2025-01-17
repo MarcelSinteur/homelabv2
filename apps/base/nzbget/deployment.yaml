@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nzbget
+  namespace: nzbget
+  labels:
+    app: nzbget
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: nzbget
+  template:
+    metadata:
+      labels:
+        app: nzbget
+    spec:
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: true
+      containers:
+        - name: nzbget
+          securityContext:
+            runAsUser: 0
+          image: "ghcr.io/geek-cookbook/nzbget:24.1"
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /Media
+              name: nzbget
+            - mountPath: /config
+              name: config
+          env:
+            - name: TZ
+              value: UTC
+          ports:
+            - containerPort: 6789
+              protocol: TCP
+      volumes:
+      - name: nzbget
+        persistentVolumeClaim:
+          claimName: pvc-nzbget
+      - name: config
+        hostPath:
+          path: /etc/configs/nzbget
