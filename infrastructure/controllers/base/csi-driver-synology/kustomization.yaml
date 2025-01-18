@@ -4,3 +4,4 @@ resources:
   - external-secret.yaml
   - csi-driver.yaml
   - storageclass-smb.yaml
+  - storageclass-media.yaml

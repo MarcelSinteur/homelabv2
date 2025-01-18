@@ -1,0 +1,16 @@
+#This storageclass accomodates a situation in which a file is downloaded to a certain folder, but needs to be accessed by another pod later.
+#If a file share isn't provided, a new file share would be created, one which the other pod doesn't know the location of.
+#If a new folder is created inside an existing file share (called 'Media' in this case), the other pod can just mount the parent fileshare.
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: sc-smb-media
+provisioner: csi.san.synology.com
+parameters:
+  dsm: '192.168.178.2'
+  location: "/volume1/Media"
+  protocol: "smb"
+  csi.storage.k8s.io/node-stage-secret-name: smb-secrets
+  csi.storage.k8s.io/node-stage-secret-namespace: azure
+reclaimPolicy: Retain
+allowVolumeExpansion: true
