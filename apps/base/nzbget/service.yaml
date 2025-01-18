@@ -9,6 +9,7 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - port: 6789
+  - port: 10003
+    targetPort: 6789s
   selector:
     app: nzbget
