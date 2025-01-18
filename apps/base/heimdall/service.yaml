@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-heimdall
+  namespace: heimdall
+  labels:
+    app: heimdall
+  annotations:
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 10000
+    targetPort: 80
+  selector:
+    app: heimdall

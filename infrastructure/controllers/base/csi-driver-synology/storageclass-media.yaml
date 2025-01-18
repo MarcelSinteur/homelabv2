@@ -1,0 +1,15 @@
+#This storageclass accomodates a situation in which a file is downloaded to a certain folder, but needs to be accessed by another pod later.
+#If a file share isn't provided, a new file share would be created, one which the other pod doesn't know the location of.
+#If a new folder is created inside an existing file share (called 'Media' in this case), the other pod can just mount the parent fileshare.
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: sc-nfs-media
+provisioner: nfs.csi.k8s.io
+parameters:
+  server: '192.168.178.2'
+  share: "/volume1/Media"
+mountOptions:
+  - nfsvers=4.1
+reclaimPolicy: Retain
+allowVolumeExpansion: true

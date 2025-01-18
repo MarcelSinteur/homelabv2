@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: radarr
+  namespace: radarr
+  labels:
+    app: radarr
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: radarr
+  template:
+    metadata:
+      labels:
+        app: radarr
+    spec:
+      containers:
+        - name: radarr
+          image: "lscr.io/linuxserver/radarr:latest"
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /config
+              name: config
+            - mountPath: /Media
+              name: nas-media
+          env:
+            - name: TZ
+              value: Etc/UTC
+          ports:
+            - containerPort: 7878
+              protocol: TCP
+      volumes:
+      - name: config
+        hostPath:
+          path: /etc/configs/radarr
+      - name: nas-media
+        hostPath:
+          path: /mnt/Media
