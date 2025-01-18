@@ -25,6 +25,8 @@ spec:
           volumeMounts:
             - mountPath: /config
               name: config
+            - mountPath: /Media
+              name: nas-media
           env:
             - name: TZ
               value: Etc/UTC
@@ -35,3 +37,6 @@ spec:
       - name: config
         hostPath:
           path: /etc/configs/plex
+      - name: nas-media
+        hostPath:
+          path: /mnt/Media
