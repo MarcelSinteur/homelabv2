@@ -10,6 +10,6 @@ spec:
   type: LoadBalancer
   ports:
   - port: 10003
-    targetPort: 6789s
+    targetPort: 6789
   selector:
     app: nzbget
