@@ -10,8 +10,7 @@ parameters:
   dsm: '192.168.178.2'
   location: "/volume1/Media"
   protocol: "nfs"
-  csi.storage.k8s.io/node-stage-secret-name: smb-secrets
-  csi.storage.k8s.io/node-stage-secret-namespace: azure
+  mountPermissions: '0755'
 mountOptions:
   - nfsvers=4.1
 reclaimPolicy: Retain
