@@ -4,7 +4,7 @@ metadata:
   name: pvc-nzbget
   namespace: nzbget
 spec:
-  storageClassName: sc-smb-media
+  storageClassName: sc-nfs-media
   accessModes:
     - ReadWriteMany
   resources:
