@@ -18,12 +18,10 @@ spec:
       labels:
         app: mealie
     spec:
-      dnsPolicy: ClusterFirst
-      enableServiceLinks: true
       containers:
         - name: mealie
           securityContext:
-            runAsUser: 0
+            privileged: true
           image: "ghcr.io/mealie-recipes/mealie:latest"
           imagePullPolicy: IfNotPresent
           volumeMounts:
@@ -31,9 +29,6 @@ spec:
               name: mealie
             - mountPath: /config
               name: config
-          env:
-            - name: TZ
-              value: UTC
           ports:
             - containerPort: 9000
               protocol: TCP
