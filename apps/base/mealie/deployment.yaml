@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mealie
+  namespace: mealie
+  labels:
+    app: mealie
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: mealie
+  template:
+    metadata:
+      labels:
+        app: mealie
+    spec:
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: true
+      containers:
+        - name: mealie
+          image: "ghcr.io/mealie-recipes/mealie:latest"
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /app/data
+              name: mealie
+            - mountPath: /config
+              name: config
+          env:
+            - name: TZ
+              value: UTC
+          ports:
+            - containerPort: 9000
+              protocol: TCP
+      volumes:
+      - name: mealie
+        persistentVolumeClaim:
+          claimName: pvc-mealie
+      - name: config
+        hostPath:
+          path: /etc/configs/mealie
