@@ -4,7 +4,7 @@ metadata:
   name: pvc-mealie
   namespace: mealie
 spec:
-  storageClassName: sc-smb
+  storageClassName: sc-nfs
   accessModes:
     - ReadWriteOnce
   resources:

@@ -5,3 +5,4 @@ resources:
   - csi-driver.yaml
   - storageclass-smb.yaml
   - storageclass-media.yaml
+  - storageclass-nfs.yaml
