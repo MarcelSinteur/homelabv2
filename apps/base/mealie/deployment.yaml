@@ -35,6 +35,9 @@ spec:
           ports:
             - containerPort: 9000
               protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: cm-mealie
       volumes:
       - name: mealie
         persistentVolumeClaim:
