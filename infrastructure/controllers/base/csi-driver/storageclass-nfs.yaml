@@ -5,7 +5,7 @@ metadata:
 provisioner: nfs.csi.k8s.io
 parameters:
   server: '192.168.178.2'
-  share: "/volume1"
+  share: "/volume1/Homelab"
 mountOptions:
   - nfsvers=4.1
 reclaimPolicy: Retain
