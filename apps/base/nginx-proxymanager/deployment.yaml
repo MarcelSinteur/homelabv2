@@ -31,9 +31,9 @@ spec:
               mountPath: "/etc/letsencrypt"
           ports:
             - containerPort: 80
-              name: "http"
+              name: "http-port"
             - containerPort: 443
-              name: "https"
+              name: "https-port"
             - containerPort: 81
               name: "webui"
       volumes:
