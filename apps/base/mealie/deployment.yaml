@@ -18,10 +18,10 @@ spec:
       labels:
         app: mealie
     spec:
+      securityContext:
+        runAsUser: 0
       containers:
         - name: mealie
-          securityContext:
-            privileged: true
           image: "ghcr.io/mealie-recipes/mealie:latest"
           imagePullPolicy: IfNotPresent
           volumeMounts:
