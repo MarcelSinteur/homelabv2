@@ -4,6 +4,7 @@ metadata:
   name: sc-nfs
 provisioner: csi.san.synology.com
 parameters:
+  protocol: "nfs"
   dsm: '192.168.178.2'
   location: "/volume1"
   mountPermissions: '0755'
