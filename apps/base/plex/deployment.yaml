@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plex
+  namespace: plex
+  labels:
+    app: plex
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: plex
+  template:
+    metadata:
+      labels:
+        app: plex
+    spec:
+      containers:
+        - name: plex
+          image: "lscr.io/linuxserver/plex:latest"
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /config
+              name: config
+            - mountPath: /Media
+              name: nas-media
+          env:
+            - name: TZ
+              value: Etc/UTC
+          ports:
+            - containerPort: 32400
+              protocol: TCP
+      volumes:
+      - name: config
+        hostPath:
+          path: /etc/configs/plex
+      - name: nas-media
+        hostPath:
+          path: /mnt/Media
