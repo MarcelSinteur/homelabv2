@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-radarr
+  namespace: radarr
+  labels:
+    app: radarr
+  annotations:
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 10002
+    targetPort: 7878
+  selector:
+    app: radarr
