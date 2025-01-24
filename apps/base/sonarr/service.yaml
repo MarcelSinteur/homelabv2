@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-sonarr
+  namespace: sonarr
+  labels:
+    app: sonarr
+  annotations:
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 10005
+    targetPort: 8989
+  selector:
+    app: sonarr
