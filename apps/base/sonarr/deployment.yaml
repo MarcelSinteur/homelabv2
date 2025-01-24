@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonarr
+  namespace: sonarr
+  labels:
+    app: sonarr
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: sonarr
+  template:
+    metadata:
+      labels:
+        app: sonarr
+    spec:
+      containers:
+        - name: sonarr
+          image: "lscr.io/linuxserver/sonarr:latest"
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /config
+              name: config
+            - mountPath: /Media
+              name: nas-media
+          env:
+            - name: TZ
+              value: Etc/UTC
+          ports:
+            - containerPort: 8989
+              protocol: TCP
+      volumes:
+      - name: config
+        hostPath:
+          path: /etc/configs/sonarr
+      - name: nas-media
+        hostPath:
+          path: /mnt/Media
