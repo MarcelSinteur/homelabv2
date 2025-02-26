@@ -18,6 +18,7 @@ spec:
       labels:
         app: valheim
     spec:
+      serviceAccountName: sa-valheim
       containers:
         - name: valheim
           image: "docker.io/lloesche/valheim-server:latest"
