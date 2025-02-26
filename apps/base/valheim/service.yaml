@@ -12,8 +12,10 @@ spec:
   - port: 10006
     targetPort: 2456
     protocol: UDP
+    name: private-port
   - port: 10007
     targetPort: 2457
     protocol: UDP
+    name: public-port
   selector:
     app: valheim
