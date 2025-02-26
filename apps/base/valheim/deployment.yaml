@@ -32,6 +32,7 @@ spec:
               value: Etc/UTC
           ports:
             - containerPort: 2456
+            
               protocol: UDP
             - containerPort: 2457
               protocol: UDP
