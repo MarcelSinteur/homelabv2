@@ -5,7 +5,7 @@ metadata:
   namespace: azure
 subjects:
   - kind: ServiceAccount
-    name: sa-secret-reader
+    name: sa-valheim
     namespace: valheim
 roleRef:
   kind: Role
