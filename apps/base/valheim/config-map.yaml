@@ -6,4 +6,4 @@ metadata:
 data:
   SERVER_NAME: "Marcels Valheim Server"
   WORLD_NAME: "Marcels Valheim World"
-  TZ: Etc/UTC
+  TZ: "Etc/UTC"
