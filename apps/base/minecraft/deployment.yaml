@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: valheim
-  namespace: valheim
+  name: minecraft
+  namespace: minecraft
   labels:
-    app: valheim
+    app: minecraft
 spec:
   revisionHistoryLimit: 3
   replicas: 1
@@ -12,16 +12,15 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      app: valheim
+      app: minecraft
   template:
     metadata:
       labels:
-        app: valheim
+        app: minecraft
     spec:
-      serviceAccountName: sa-valheim
       containers:
-        - name: valheim
-          image: "docker.io/lloesche/valheim-server:latest"
+        - name: minecraft
+          image: "docker.io/itzg/minecraft-server:latest"
           imagePullPolicy: IfNotPresent
           volumeMounts:
             - mountPath: /config
@@ -30,19 +29,15 @@ spec:
               name: data
           envFrom:
             - configMapRef:
-                name: cm-valheim
-            - secretRef:
-                name: es-valheim-secrets
+                name: cm-minecraft
           ports:
-            - containerPort: 2456            
-              protocol: UDP
-            - containerPort: 2457
-              protocol: UDP
+            - containerPort: 25565            
+              protocol: TCP
       volumes:
       - name: config
         hostPath:
-          path: /etc/configs/valheim
+          path: /etc/configs/minecraft
       - name: data
         hostPath:
-          path: /etc/data/valheim
+          path: /etc/data/minecraft
  
