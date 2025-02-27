@@ -28,11 +28,6 @@ spec:
               name: config
             - mountPath: /data
               name: data
-          envFrom:
-            - configMapRef:
-                name: cm-valheim
-            - secretRef:
-                name: es-valheim-secrets
           ports:
             - containerPort: 2456            
               protocol: UDP
