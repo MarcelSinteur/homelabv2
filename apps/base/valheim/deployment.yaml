@@ -32,7 +32,7 @@ spec:
             - configMapRef:
                 name: cm-valheim
             - secretRef:
-                name: es-valheim
+                name: es-valheim-secrets
           ports:
             - containerPort: 2456            
               protocol: UDP
