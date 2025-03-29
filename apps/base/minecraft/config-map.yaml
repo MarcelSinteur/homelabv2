@@ -5,4 +5,6 @@ metadata:
   namespace: minecraft
 data:
   EULA: "TRUE"
-  SERVER_NAME: "Marcels Server"
+  SERVER_NAME: "Marcels Hardcore Server"
+  HARDCORE: "TRUE"
+  FORCE_GAMEMODE: "TRUE"
