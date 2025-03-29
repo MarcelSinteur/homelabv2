@@ -6,4 +6,4 @@ metadata:
 data:
   EULA: "TRUE"
   SERVER_NAME: "Marcels Hardcore Server"
-  HARDCORE: true
+  HARDCORE: "TRUE"
