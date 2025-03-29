@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: minecraft
-          image: "docker.io/itzg/minecraft-server:latest"
+          image: "docker.io/itzg/minecraft-server:1.21.4"
           imagePullPolicy: IfNotPresent
           volumeMounts:
             - mountPath: /config
