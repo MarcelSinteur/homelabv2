@@ -10,3 +10,4 @@ resources:
   - valheim
   - minecraft
   - grafana
+  - prometheus
