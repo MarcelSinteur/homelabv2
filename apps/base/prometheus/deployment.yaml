@@ -25,7 +25,7 @@ spec:
           image: "prom/prometheus:latest"
           imagePullPolicy: IfNotPresent
           volumeMounts:
-            - mountPath: /config
+            - mountPath: /etc/prometheus
               name: config
           ports:
             - containerPort: 9090
