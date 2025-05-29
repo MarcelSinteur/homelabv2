@@ -20,27 +20,10 @@ spec:
     spec:
       dnsPolicy: ClusterFirst
       enableServiceLinks: true
-      initContainers:
-        - name: file-creator
-          image: busybox
-          command:
-            - /bin/sh
-            - -c
-            - touch /config/prometheus.yml
-          volumeMounts:
-            - name: config-volume
-              mountPath: /config
       containers:
         - name: prometheus
           image: "prom/prometheus:latest"
           imagePullPolicy: IfNotPresent
-          volumeMounts:
-            - mountPath: /etc/prometheus
-              name: config
           ports:
             - containerPort: 9090
               protocol: TCP
-      volumes:
-      - name: config
-        hostPath:
-          path: /etc/configs/prometheus
