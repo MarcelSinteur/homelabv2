@@ -31,9 +31,6 @@ spec:
             - containerPort: 9090
               protocol: TCP
       volumes:
-      - name: prometheus
-        persistentVolumeClaim:
-          claimName: pvc-prometheus
       - name: config
         hostPath:
           path: /etc/configs/prometheus
