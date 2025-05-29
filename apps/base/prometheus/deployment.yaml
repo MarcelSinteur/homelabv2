@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus
+  namespace: prometheus
+  labels:
+    app: prometheus
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: true
+      containers:
+        - name: prometheus
+          image: "prom/prometheus:latest"
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /config
+              name: config
+          ports:
+            - containerPort: 9090
+              protocol: TCP
+      volumes:
+      - name: prometheus
+        persistentVolumeClaim:
+          claimName: pvc-prometheus
+      - name: config
+        hostPath:
+          path: /etc/configs/prometheus
