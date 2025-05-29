@@ -11,3 +11,4 @@ resources:
   - minecraft
   - grafana
   - prometheus
+  - blackbox-exporter
