@@ -9,3 +9,4 @@ resources:
   - sonarr
   - valheim
   - minecraft
+  - grafana
