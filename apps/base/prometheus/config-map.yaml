@@ -18,9 +18,17 @@ data:
         static_configs:
           - targets:
             - 192.168.178.227:10001/web/index.html #Plex
+              labels: 
+                instance: 'Plex'
             - 192.168.178.227:10002 #Radarr
+              labels:
+                instance: 'Radarr'
             - 192.168.178.227:10004 #Mealie
+              labels:
+                instance: 'Mealie'
             - 192.168.178.227:10005 #Sonarr
+              labels:
+                instance: 'Sonarr'
         relabel_configs:
           - source_labels: [__address__]
             target_label: __param_target
