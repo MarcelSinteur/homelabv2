@@ -17,21 +17,26 @@ data:
           module: [http_2xx]  # Look for a HTTP 200 response.
         static_configs:
           - targets:
-            - 192.168.178.227:10001/web/index.html #Plex
-              labels: 
-                instance: 'Plex'
-            - 192.168.178.227:10002 #Radarr
-              labels:
-                instance: 'Radarr'
-            - 192.168.178.227:10004 #Mealie
-              labels:
-                instance: 'Mealie'
-            - 192.168.178.227:10005 #Sonarr
-              labels:
-                instance: 'Sonarr'
+              - 192.168.178.227:10001/web/index.html
+            labels:
+              instance: Plex
+          - targets:
+              - 192.168.178.227:10002
+            labels:
+              instance: Radarr
+          - targets:
+              - 192.168.178.227:10004
+            labels:
+              instance: Mealie
+          - targets:
+              - 192.168.178.227:10005
+            labels:
+              instance: Sonarr
         relabel_configs:
           - source_labels: [__address__]
             target_label: __param_target
+          - source_labels: [__param_target]
+            target_label: target
           - target_label: __address__
             replacement: 192.168.178.227:10011
       - job_name: 'blackbox_exporter'
