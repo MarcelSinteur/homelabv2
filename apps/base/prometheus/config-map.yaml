@@ -19,21 +19,19 @@ data:
           - targets:
             - 192.168.178.227:10001/web/index.html #Plex
               labels: 
-                name: 'Plex'
+                instance: 'Plex'
             - 192.168.178.227:10002 #Radarr
               labels:
-                name: 'Radarr'
+                instance: 'Radarr'
             - 192.168.178.227:10004 #Mealie
               labels:
-                name: 'Mealie'
+                instance: 'Mealie'
             - 192.168.178.227:10005 #Sonarr
               labels:
-                name: 'Sonarr'
+                instance: 'Sonarr'
         relabel_configs:
           - source_labels: [__address__]
             target_label: __param_target
-          - source_labels: [__param_target]
-            target_label: instance
           - target_label: __address__
             replacement: 192.168.178.227:10011
       - job_name: 'blackbox_exporter'
