@@ -80,14 +80,15 @@ data:
         kubernetes_sd_configs:
         - role: pod
           namespaces:
-            - flux-system
-            - nzbget
-            - mealie
-            - plex
-            - radarr
-            - sonarr
-            - valheim
-            - minecraft
+            names:
+              - flux-system
+              - nzbget
+              - mealie
+              - plex
+              - radarr
+              - sonarr
+              - valheim
+              - minecraft
         relabel_configs:
         - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
           action: keep
