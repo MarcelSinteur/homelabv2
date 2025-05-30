@@ -17,13 +17,10 @@ data:
           module: [http_2xx]  # Look for a HTTP 200 response.
         static_configs:
           - targets:
-            - 192.168.178.227:10001 #Plex
+            - 192.168.178.227:10001/web/index.html #Plex
             - 192.168.178.227:10002 #Radarr
-            - 192.168.178.227:10003 #Nzbget
             - 192.168.178.227:10004 #Mealie
             - 192.168.178.227:10005 #Sonarr
-            - 192.168.178.227:10006 #Valheim
-            - 192.168.178.227:10008 #Minecraft
         relabel_configs:
           - source_labels: [__address__]
             target_label: __param_target
