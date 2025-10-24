@@ -5,9 +5,9 @@ resources:
   - heimdall
   - plex
   - radarr
-  - mealie
+  #- mealie
   - sonarr
-  - valheim
+  #- valheim
   - minecraft
   #- grafana
   #- prometheus
