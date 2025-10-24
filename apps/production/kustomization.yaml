@@ -9,6 +9,6 @@ resources:
   - sonarr
   - valheim
   - minecraft
-  - grafana
-  - prometheus
-  - blackbox-exporter
+  #- grafana
+  #- prometheus
+  #- blackbox-exporter
