@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: adguard
-          image: adguard/adguardhome:latest
+          image: lscr.io/linuxserver/adguardhome-sync:latest
           imagePullPolicy: IfNotPresent
           volumeMounts:
             - mountPath: /config
