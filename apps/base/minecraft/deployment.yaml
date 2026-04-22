@@ -40,4 +40,3 @@ spec:
       - name: data
         hostPath:
           path: /etc/data/minecraft
- 
